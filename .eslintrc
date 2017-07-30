@@ -1,0 +1,22 @@
+{
+  "env": {
+    "node": true,
+    "jest": true
+  },
+  "extends": [
+    "airbnb",
+    "prettier"
+  ],
+  "plugins": [
+    "json",
+    "prettier"
+  ],
+  "rules": {
+    "prettier/prettier": ["error", {
+      "bracketSpacing": true,
+      "printWidth": 100,
+      "singleQuote": true,
+      "trailingComma": "none"
+    }]
+  }
+}
