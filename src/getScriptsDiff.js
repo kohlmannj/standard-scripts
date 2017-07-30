@@ -10,8 +10,7 @@ const scriptIsAffected = newScripts => {
     newScripts !== null
   ) {
     const newScriptsKeys = Object.keys(newScripts);
-
-    return script => newScriptsKeys.indexOf(script) >= 0;
+    return ([script]) => newScriptsKeys.indexOf(script) >= 0;
   }
 
   throw new Error(

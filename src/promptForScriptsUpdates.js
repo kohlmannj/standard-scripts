@@ -7,17 +7,19 @@ module.exports = options => {
   return prompt([
     {
       default: true,
-      message: `Update \`scripts\` in package.json?`,
+      message: `Would you like to update \`scripts\` in package.json?`,
       name: 'update',
       type: 'list',
       choices: [
         {
-          name: 'Yes',
-          value: true,
-          default: true
+          default: true,
+          name: 'Update Scripts',
+          short: 'Yes',
+          value: true
         },
         {
-          name: 'No',
+          name: `Don't Update`,
+          short: 'No',
           value: false
         },
         {
@@ -48,7 +50,7 @@ module.exports = options => {
       }
 
       // We didn't make any updates
-      return undefined;
+      return {};
     })
     .catch(e => {
       const message =

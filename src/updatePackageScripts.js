@@ -1,3 +1,4 @@
+const cloneDeep = require('lodash.clonedeep');
 const objectEntryValueIsNotNull = require('./objectEntryValueIsNotNull');
 
 class ScriptsEntryAlreadyExistsError extends Error {
@@ -11,7 +12,7 @@ class ScriptsEntryAlreadyExistsError extends Error {
 function updatePackageScript(originalPkg, options) {
   const { key, value, remove, force } = Object.assign({}, { force: false, remove: false }, options);
 
-  const pkg = originalPkg;
+  const pkg = cloneDeep(originalPkg);
 
   if (remove === false) {
     if (force === false && typeof pkg.scripts[key] === 'string') {
@@ -49,11 +50,13 @@ module.exports = options => {
   }
 
   // Update updated `pkg` object (with updated `scripts` of course)
-  return scriptsToUpdate.reduce((pkgArg, key) => {
+  const updatedPackage = scriptsToUpdate.reduce((pkgArg, key) => {
     const value = newScripts[key];
     // Reuse `filterNullValues()` to determine if we should remove this `scripts` entry
     const remove = objectEntryValueIsNotNull([key, value]) === false;
     // Make an update to package.json
     return updatePackageScript(pkgArg, { key, value, remove, force: true });
   }, originalPkg);
+
+  return { updatedPackage, includedScripts };
 };

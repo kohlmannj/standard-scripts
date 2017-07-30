@@ -9,5 +9,5 @@ module.exports = pkgPathArg => {
 
   const pkg = require(pkgPath); // eslint-disable-line
 
-  return { pkgPath, pkg };
+  return { path: pkgPath, package: pkg };
 };
