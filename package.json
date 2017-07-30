@@ -4,7 +4,7 @@
   "description": "Add, update, or remove multiple `scripts` in package.json, based on a set of standard scripts",
   "main": "src/index.js",
   "bin": {
-    "standard-scripts": "./src/index.js"
+    "standard-scripts": "./bin/standard-scripts.js"
   },
   "repository": "https://github.com/kohlmannj/standard-scripts",
   "author": "Joe Kohlmann <kohlmannj@mac.com>",
