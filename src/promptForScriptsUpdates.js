@@ -44,7 +44,15 @@ module.exports = options => {
         updatePackageScriptsArgs.includedScripts = includedScripts;
       }
 
-      if (update !== false) {
+      if (
+        // Update if we're supposed to unconditionally update all scripts
+        update === true ||
+        // Update if the user chose _some_ scripts to update (via the array of `includedScripts`)
+        (update === 'choose' &&
+          typeof includedScripts === 'object' &&
+          includedScripts !== null &&
+          Array.isArray(includedScripts) === true)
+      ) {
         // Make updates and return the updated package object
         return updatePackageScripts(updatePackageScriptsArgs);
       }
