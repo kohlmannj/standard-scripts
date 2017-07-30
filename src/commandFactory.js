@@ -1,3 +1,4 @@
+const yargs = require('yargs');
 const isCI = require('is-ci');
 const { name } = require('../package');
 const getPackage = require('./getPackage');
@@ -13,8 +14,8 @@ module.exports = ({ isDefaultCommand }) => ({
   describe:
     'Add, update, or remove multiple `scripts` in package.json, based on a set of standard scripts',
 
-  builder: yargs => {
-    yargs
+  builder: yargsBuilder => {
+    yargsBuilder
       .config()
       .option('prompt', {
         type: 'boolean',
@@ -33,7 +34,7 @@ module.exports = ({ isDefaultCommand }) => ({
 
   handler: argv => {
     const { prompt, update, write } = argv;
-    const newScripts = argv.scripts || getConfig([`.${exports.command}.json`]);
+    const newScripts = argv.scripts || yargs.config(getConfig([`.${name}.json`])).argv.scripts;
 
     const { path: pkgPath, package: pkg } = getPackage();
 
