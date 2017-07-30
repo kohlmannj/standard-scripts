@@ -1,6 +1,6 @@
 {
   "name": "standard-scripts",
-  "version": "0.11.0",
+  "version": "0.11.1",
   "description": "Add, update, or remove multiple `scripts` in package.json, based on a set of standard scripts",
   "main": "src/index.js",
   "bin": {
