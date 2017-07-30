@@ -12,6 +12,7 @@
   "dependencies": {
     "find-up": "^2.1.0",
     "inquirer": "^3.2.1",
+    "is-ci": "^1.0.10",
     "jsonfile": "^3.0.1",
     "lodash.clonedeep": "^4.5.0",
     "lodash.isequal": "^4.5.0",

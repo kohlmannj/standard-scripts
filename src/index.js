@@ -1,5 +1,6 @@
 #!/usr/bin/env node
 const yargs = require('yargs');
+const isCI = require('is-ci');
 const findUp = require('find-up');
 const jsonfile = require('jsonfile');
 const getPackage = require('./getPackage');
@@ -20,7 +21,8 @@ const argv = yargs
   )
   .option('prompt', {
     type: 'boolean',
-    default: true
+    // Don't prompt when running on a CI service
+    default: isCI === false
   })
   .option('update', {
     type: 'boolean',
